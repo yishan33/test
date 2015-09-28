@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YHArtTradeVC">
+            <connections>
+                <outlet property="contentView" destination="ecb-bu-5Ws" id="hTR-Tm-TpW"/>
+                <outlet property="joinOfArt" destination="zdo-uU-dSE" id="Y4p-3p-bfW"/>
+                <outlet property="tradeOfArt" destination="8O4-0n-mWF" id="Wf8-F2-JWw"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8O4-0n-mWF">
+                    <rect key="frame" x="0.0" y="64" width="299" height="30"/>
+                    <state key="normal" title="艺术交易">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onClickbutton:" destination="-1" eventType="touchUpInside" id="D2B-Uk-PFU"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdo-uU-dSE">
+                    <rect key="frame" x="301" y="64" width="299" height="30"/>
+                    <state key="normal" title="艺术参与">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onClickbutton:" destination="-1" eventType="touchUpInside" id="W8G-pC-eOY"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecb-bu-5Ws">
+                    <rect key="frame" x="0.0" y="94" width="600" height="506"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="zdo-uU-dSE" firstAttribute="leading" secondItem="8O4-0n-mWF" secondAttribute="trailing" constant="2" id="GXC-mS-NJD"/>
+                <constraint firstItem="ecb-bu-5Ws" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="J3T-rX-rlY"/>
+                <constraint firstItem="zdo-uU-dSE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Wwg-WH-Fr8"/>
+                <constraint firstAttribute="trailing" secondItem="ecb-bu-5Ws" secondAttribute="trailing" id="aDz-cf-wBH"/>
+                <constraint firstItem="ecb-bu-5Ws" firstAttribute="top" secondItem="zdo-uU-dSE" secondAttribute="bottom" id="cIM-bR-r3O"/>
+                <constraint firstAttribute="bottom" secondItem="ecb-bu-5Ws" secondAttribute="bottom" id="e6g-uX-nGe"/>
+                <constraint firstAttribute="trailing" secondItem="zdo-uU-dSE" secondAttribute="trailing" id="ePo-js-7bh"/>
+                <constraint firstItem="8O4-0n-mWF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="ncm-gL-KHU"/>
+                <constraint firstItem="8O4-0n-mWF" firstAttribute="width" secondItem="zdo-uU-dSE" secondAttribute="width" id="ott-nd-3tP"/>
+                <constraint firstItem="8O4-0n-mWF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zC4-Me-kIF"/>
+            </constraints>
+            <point key="canvasLocation" x="276" y="241"/>
+        </view>
+    </objects>
+</document>

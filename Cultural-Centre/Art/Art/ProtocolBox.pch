@@ -1,0 +1,431 @@
+//
+//  PrefixHead.pch
+//  Art
+//
+//  Created by Liu fushan on 15/7/10.
+//  Copyright (c) 2015年 test. All rights reserved.
+//
+#import <UIKit/UIKit.h>
+
+
+#ifndef Art_PrefixHead_pch
+#define Art_PrefixHead_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif
+@class ForthonVideoDescription;
+@class ForthonDataSpider;
+
+#define AppColor [UIColor colorWithRed:220.0 / 255.0 green:0.0 / 255.0 blue:0.0 / 255.0 alpha:1.0]
+#define GrayColor [UIColor colorWithRed:246.0 / 255.0 green:(246.0 / 255.0) blue:246.0 / 255.0 alpha:1.0]
+#pragma mark - 轮播图协议
+
+
+
+@protocol TradeBannerDelegate <NSObject>
+
+- (void)getTradeBannerImages;
+
+@end
+
+#pragma mark 注册协议
+
+@protocol Register <NSObject>           //注册
+
+- (void)registerUserWithName:(NSString *)name passWord:(NSString *)password phoneNumber:(NSString *)phoneNumber;
+- (void)sendIdentifyingCode:(NSString *)phoneNumber;
+- (void)confirmPhone:(NSString *)phoneNumber WithCode:(NSString *)code;
+
+@end
+
+#pragma mark 登录协议
+
+@protocol AppLogin <NSObject>           //登录
+
+- (void)loginWithIdstr:(NSString *)idStr passWord:(NSString *)password;
+
+@end
+
+@protocol Logout <NSObject>
+
+- (void)logOut;
+
+@end
+
+@protocol registerLogin <NSObject>      //注册之后登录
+
+- (void)login;
+-(void)fastLoginWithUserName:(NSString *)userName password:(NSString *)password;
+
+@end
+
+#pragma mark 演艺协议
+
+@protocol VideoAddSkim <NSObject>             //播放视频
+
+- (void)setTheSkimNumber:(NSString *)numberStr;
+- (void)setTheCommentNumber:(NSString *)commentStr;
+
+@end
+
+
+@protocol PushAuthorDelegate <NSObject>
+
+- (void)pushAuthorDescriptionWitDic:(NSMutableDictionary *)dic;
+
+@end
+
+@protocol PushDescriptionView <PushAuthorDelegate>
+
+- (void)beginPushViewWithDic:(NSMutableDictionary *)dic;
+- (void)pushAuthorDescriptionWithDic:(NSMutableDictionary *)dic returnObject:(id)object;
+
+@end
+
+@protocol addVideoNumbers <NSObject>              //浏览数+1
+
+- (void)addSkimNumber:(NSString *)workId WithCategoryIndex:(int)category tinyTag:(int)tinyTag typeId:(int)typeId;
+- (void)addShareNumber:(NSString *)workId;
+- (void)addCollectNumber:(NSString *)workId;
+- (void)addCommentNumber:(NSString *)workId;
+- (void)getPageInfoById:(NSString *)workId;
+@end
+
+@protocol addPageNumbers <addVideoNumbers>
+
+@end
+
+@protocol addArtNumgers <addVideoNumbers>
+
+@end
+
+
+@protocol SetAndCancelFollow <NSObject>          //添加，取消关注
+
+- (void)setFollowWithTargetId:(NSString *)targetId;
+- (void)cancelFollowWithTargetId:(NSString *)targetId andNotification:(BOOL)notification;
+- (void)getFollowStatusByTargetId:(NSString *)targetId;
+
+@end
+
+@protocol addAndCancelFavor <NSObject>          //添加、取消收藏
+
+- (void)getFaovrStatusByTypeid:(NSString *)typeId TargetId:(NSString *)targetId;
+- (void)setFavorWithTypeid:(int)typeid TargetId:(NSString *)targetId;
+- (void)cancelFavorWithTypeid:(int)typeid TargetId:(NSString *)targetId;
+
+@end
+
+
+
+@protocol SpiderDelegate <NSObject>             //获取视频、文章列表
+
+- (void)getVideosByTypeid:(int)typeid page:(int)page;
+- (void)getArtListByTypeid:(int)typeid trade:(BOOL)trade page:(int)page;
+
+@end
+
+#pragma mark 提交订单
+
+@protocol SubmitOrderDelegate <NSObject>
+
+- (void)submitOrderWithWorkId:(NSString *)workId recipient:(NSString *)recipient phoneNumber:(NSString *)phoneNumber address:(NSString *)address;
+
+@end
+
+@protocol OrderProtocolDelegate <NSObject>
+
+- (void)getOrderProtocol;
+
+@end
+
+#pragma mark 作者个人信息协议
+
+@protocol AuthorDataDelegate <NSObject>         //获取作者作品集信息
+
+- (void)getUserArtGroupById:(NSString *)authorId;
+- (void)getUserInfoByUserId:(NSString *)userId;
+- (void)getUserPagesById:(NSString *)authorId;
+
+@end
+
+@protocol ForthonWorkCellDelegate <NSObject>
+
+- (void)pushArtDescriptionWithDic:(NSMutableDictionary *)dic;
+- (void)pushVideoDescriptionWithDic:(NSMutableDictionary *)dic;
+- (void)pushPaperViewWithDic:(NSDictionary *)dic;
+
+
+@end
+
+#pragma mark 博艺协议
+
+@protocol pushDescription <NSObject>        //博艺点击头像、作品实现跳转
+
+- (void)tapPictureImage;
+- (void)tapHeadImage;
+
+@end
+
+@protocol ArtDescriptionSpiderDelegate <NSObject>     //获取艺术品详情
+
+- (void)getArtDescriptionById:(NSString *)workId;
+- (void)getWorkTradeState:(NSString *)workId;
+
+@end
+
+@protocol ArtSearchDelegate <NSObject>      //艺术品分类搜索
+
+
+- (void)seachArtByKeyword:(NSString *)keyword typeid:(int)typeid trade:(BOOL)isTrade pageNumber:(int)pagenumber;
+
+@end
+
+#pragma mark 论艺协议
+
+@protocol pageSpiderDelegate <NSObject>      //获取文章列表信息
+
+- (void)getPagesByPage:(int)page;
+
+@end
+
+@protocol pushPageDelegate <NSObject>
+
+- (void)pushPageViewByDic:(NSDictionary *)dic;
+
+@end
+
+@protocol SendAndGetComment <NSObject>      //获取、发送评论
+
+- (void)getCommentByTypeid:(int)typeid targetId:(NSString *)workId page:(int)page;
+- (void)sendCommentsByTypeid:(int)typeid targetId:(NSString *)workId fatherId:(NSString *)fatherId content:(NSString *)content;
+
+@end
+
+
+#pragma mark 浏览协议
+
+
+typedef enum {
+    SkimViewTypeComment,
+    SkimViewTypeSkim,
+    SkimViewTypeNew
+}SkimViewType;
+
+
+@protocol SkimViewDelegate <NSObject>
+
+- (void)getSkimsByType:(SkimViewType)type;
+
+@end
+
+
+#pragma mark 搜索协议
+
+@protocol SearchDelegate <NSObject>                 //按关键字搜索
+
+- (void)getResultBySearchKeyword:(NSString *)keyword;
+
+@end
+
+#pragma mark 我的 协议
+
+
+@protocol GetMyPage <NSObject>
+
+- (void)getMyPagesByPage:(int)page;
+
+@end
+
+@protocol GetMyFollow <NSObject>
+
+- (void)getMyFollowsByPage:(int)page;
+
+@end
+
+@protocol  CancelFollow <NSObject>
+
+- (void)cancelFollowWithTargetId:(NSString *)targetId andNotification:(BOOL)notification;
+
+@end
+
+
+@protocol UpdateTable <NSObject>
+
+- (void)updateTable;
+
+@end
+
+@protocol GetMyWork <NSObject>
+
+- (void)getMyWorksByTypeid:(int)typeid;
+- (void)getMyWorksByPage:(int)page;
+
+@end
+
+@protocol GetMyComment <NSObject>
+
+- (void)getMyCommentsByPage:(int)page;
+
+@end
+
+@protocol GetUnreadNumber <NSObject>
+ 
+- (void)getMyCommentsNoRead;
+
+@end
+
+@protocol SetCommentRead <NSObject>
+
+- (void)setCommentStatusRead:(NSString *)commentId;
+
+@end
+
+@protocol myCommentPushDescription <NSObject>
+
+- (void)pushDescriptionViewWithTypeId:(int)type workDic:(NSDictionary *)dic;
+
+@end
+
+@protocol GetCommentContentData <NSObject>          //获取我的评论信息
+
+- (void)getPageById:(NSString *)pageId;
+- (void)getArtDescriptionById:(NSString *)workId;
+- (void)getVideoDescriptionById:(NSString *)workId;
+
+
+@end
+
+@protocol BannerDelegate <GetCommentContentData>
+
+- (void)getHomeBannerImages;
+
+@end
+
+@protocol GetMyFavor <NSObject>
+
+- (void)getMyFavorsByPage:(int)page;
+
+@end
+
+
+@protocol Login <NSObject>             //弹出登录框
+
+- (void)pushLoginCurtain;
+
+@end
+
+#pragma mark 修改个人头像
+
+@protocol ModifyUserHeadImage <NSObject>
+
+- (void)updateInfoWithTargetId:(NSString *)targetId
+                     avatarUrl:(NSString *)imageUrl
+                       profile:(NSString *)profile;
+
+@end
+
+@protocol ModifyUserNick <NSObject>
+
+- (void) modifyNickNameWithName:(NSString *)nickName;
+
+@end
+
+#pragma mark 修改密码
+
+@protocol ModifyPassword <NSObject>
+
+- (void)modifyPasswordWithOldPassword:(NSString *)oldPassword To:(NSString *)newPassword;
+
+@end
+
+#pragma mark 重置密码
+
+@protocol ResetPassword <NSObject>
+
+- (void)confirmUserExistByUserName:(NSString *)userName phoneNumber:(NSString *)phone;
+- (void)resetPasswordByPhoneNumber:(NSString *)phoneNumber password:(NSString *)newPassword;
+- (void)sendIdentifyingCode:(NSString *)phoneNumber;
+- (void)confirmPhone:(NSString *)phoneNumber WithCode:(NSString *)code;
+
+@end
+
+#pragma mark 修改用户名
+
+@protocol ModifyUserName <NSObject>
+
+- (void)modifyUserNameWithName:(NSString *)name;
+
+@end
+
+#pragma mark 修改手机号 - 短信验证 - 绑定手机
+
+@protocol ModifyPhoneNumber <NSObject>
+
+- (void)confirmPhone:(NSString *)phoneNumber WithCode:(NSString *)code;
+- (void)modifyPhoneNumberWithNumber:(NSString *)phoneNumber;
+- (void)sendIdentifyingCode:(NSString *)phoneNumber;
+- (void)bindPhoneToAppWithPhoneNumber:(NSString *)phoneNumber identifyingCode:(NSString *)code;
+
+@end
+
+
+#pragma mark - 分享URL
+
+@protocol ShareDelegate <NSObject>
+
+- (void)getShareUrlWithTypeid:(int)typeid TargetId:(NSString *)targetId;
+- (void)addShareByType:(int)type workId:(NSString *)workId;
+
+@end
+
+@protocol RefreshView <NSObject>      //登录之后立马刷新
+
+- (void)refresh;
+
+@end
+
+@protocol LoginAndRefresh <NSObject>
+
+- (void)pushLoginCurtain;
+- (void)refresh;
+
+@end
+
+@protocol GetVideoCommentDelegate <NSObject>            //获取视频评论信息
+
+- (void)getCommentByTypeid:(int)typeid targetId:(NSString *)workId page:(int)page;
+- (void)sendCommentsByTypeid:(int)typeid targetId:(NSString *)workId fatherId:(NSString *)fatherId content:(NSString *)content;
+
+@end
+
+#pragma mark - 反馈
+
+@protocol FeedBackDelegate <NSObject>
+
+- (void)sendSuggestWithContent:(NSString *)content contact:(NSString *)contact;
+
+@end
+
+
+#pragma mark - 取消textField输入协议
+
+@protocol CancelTextFieldDelegate <NSObject>
+
+- (void)endInput;
+
+@end
+
+#pragma mark - 获取版本号
+
+@protocol VersionDelegate <NSObject>
+
+- (void)getVersion;
+
+@end
+
+
+
+

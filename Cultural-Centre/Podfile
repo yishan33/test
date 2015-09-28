@@ -1,0 +1,3 @@
+pod 'SVProgressHUD'
+
+xcodeproj 'Art/Art.xcodeproj'
